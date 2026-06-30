@@ -1,0 +1,56 @@
+[
+  {
+    "id": "lorenz-attractor",
+    "title": "Lorenz Attractor",
+    "description": "A chaotic system showing how tiny changes create wildly different outcomes.",
+    "desmos": "https://www.desmos.com/3d/jcmeqwvxig",
+    "thumbnail": "assets/thumbnails/lorenz.png",
+    "difficulty": "Advanced",
+    "tags": ["Chaos", "Calculus", "Simulation"],
+    "featured": true
+  },
+
+  {
+    "id": "parametric-rose",
+    "title": "Parametric Rose",
+    "description": "A rose curve built using polar equations and trigonometric functions.",
+    "desmos": "https://www.desmos.com/calculator/REPLACE_THIS",
+    "thumbnail": "assets/thumbnails/rose.png",
+    "difficulty": "Intermediate",
+    "tags": ["Geometry", "Polar", "Art"],
+    "featured": true
+  },
+
+  {
+    "id": "fourier-wave",
+    "title": "Fourier Wave Synthesis",
+    "description": "Combining sine waves to approximate complex periodic motion.",
+    "desmos": "https://www.desmos.com/calculator/REPLACE_THIS",
+    "thumbnail": "assets/thumbnails/fourier.png",
+    "difficulty": "Advanced",
+    "tags": ["Calculus", "Waves", "Signals"],
+    "featured": true
+  },
+
+  {
+    "id": "circle-inversion",
+    "title": "Circle Inversion Geometry",
+    "description": "Visualizing inversion transformations inside a circle.",
+    "desmos": "https://www.desmos.com/calculator/REPLACE_THIS",
+    "thumbnail": "assets/thumbnails/inversion.png",
+    "difficulty": "Intermediate",
+    "tags": ["Geometry", "Transformations"],
+    "featured": false
+  },
+
+  {
+    "id": "random-walk",
+    "title": "2D Random Walk Simulation",
+    "description": "A probabilistic path simulation demonstrating stochastic movement.",
+    "desmos": "https://www.desmos.com/calculator/REPLACE_THIS",
+    "thumbnail": "assets/thumbnails/randomwalk.png",
+    "difficulty": "Beginner",
+    "tags": ["Probability", "Simulation"],
+    "featured": false
+  }
+]
