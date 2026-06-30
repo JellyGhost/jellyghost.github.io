@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Graph Viewer | Desmos Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span class="logo-icon">∫</span>
+        <span>Graph Viewer</span>
+    </div>
+
+    <nav>
+        <a href="gallery.html">← Back to Gallery</a>
+        <a id="openDesmos" target="_blank">Open in Desmos</a>
+    </nav>
+
+</header>
+
+<section class="hero" style="min-height:40vh;">
+
+    <div class="hero-text">
+
+        <p class="eyebrow">Interactive Graph</p>
+
+        <h1 id="title">Loading...</h1>
+
+        <p class="hero-description" id="description"></p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div id="graphContainer"
+         style="
+            max-width:1100px;
+            margin:auto;
+            border-radius:18px;
+            overflow:hidden;
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow:0 20px 60px rgba(0,0,0,.4);
+         ">
+
+        <iframe
+            id="desmosFrame"
+            style="width:100%;height:600px;border:none;"
+            src="">
+        </iframe>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div style="max-width:900px;margin:auto;text-align:center;">
+
+        <h2>Details</h2>
+
+        <div id="tags" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;"></div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© <span id="year"></span> Kiernan Mulholland</p>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+/* ============================
+   Graph Page Logic
+============================ */
+
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+async function loadGraph() {
+
+    const id = getQueryParam("id");
+
+    const graphs = await loadGraphs();
+
+    const graph = graphs.find(g => g.id === id);
+
+    if (!graph) {
+        document.getElementById("title").textContent = "Graph Not Found";
+        return;
+    }
+
+    document.getElementById("title").textContent = graph.title;
+    document.getElementById("description").textContent = graph.description;
+
+    document.getElementById("openDesmos").href = graph.desmos;
+
+    /* Desmos embed */
+    const iframe = document.getElementById("desmosFrame");
+
+    iframe.src = graph.desmos;
+
+    /* tags */
+    const tagContainer = document.getElementById("tags");
+
+    graph.tags.forEach(tag => {
+
+        const el = document.createElement("span");
+
+        el.textContent = tag;
+
+        el.style.cssText = `
+            padding:6px 12px;
+            border-radius:999px;
+            background:rgba(78,161,255,.15);
+            border:1px solid rgba(78,161,255,.3);
+            color:#cfe6ff;
+            font-size:13px;
+        `;
+
+        tagContainer.appendChild(el);
+    });
+}
+
+loadGraph();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
