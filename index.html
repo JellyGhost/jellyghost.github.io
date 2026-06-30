@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kiernan Mulholland | Desmos Portfolio</title>
+
+    <meta name="description" content="An interactive portfolio of mathematical visualizations, simulations, and art created in Desmos.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="background"></div>
+
+<header>
+
+    <div class="logo">
+        <span class="logo-icon">∫</span>
+        <span>Desmos Portfolio</span>
+    </div>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#featured">Featured</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <p class="eyebrow">Interactive Mathematics</p>
+
+        <h1>
+            Hi, I'm
+            <span class="accent">Kiernan Mulholland</span>
+        </h1>
+
+        <h2 id="typing"></h2>
+
+        <p class="hero-description">
+            I create mathematical visualizations, simulations,
+            procedural art, and interactive models using Desmos.
+            Every graph is fully interactive and built from
+            equations.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="gallery.html" class="button primary">
+                Explore Graphs
+            </a>
+
+            <a href="https://www.desmos.com/" target="_blank" class="button secondary">
+                Desmos
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="stats">
+
+    <div class="stat-card">
+        <h2 id="graphCount">0</h2>
+        <p>Graphs</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>100%</h2>
+        <p>Interactive</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>∞</h2>
+        <p>Ideas</p>
+    </div>
+
+</section>
+
+<section id="featured">
+
+    <h2>Featured Graphs</h2>
+
+    <p class="section-description">
+        A few of my favorite creations.
+    </p>
+
+    <div class="featured-grid">
+
+        <article class="feature-card">
+
+            <div class="placeholder">
+                Preview
+            </div>
+
+            <h3>Chaos Simulation</h3>
+
+            <p>
+                Explore chaotic systems and how
+                tiny changes produce dramatically
+                different outcomes.
+            </p>
+
+        </article>
+
+        <article class="feature-card">
+
+            <div class="placeholder">
+                Preview
+            </div>
+
+            <h3>Parametric Art</h3>
+
+            <p>
+                Mathematical artwork generated from
+                equations and transformations.
+            </p>
+
+        </article>
+
+        <article class="feature-card">
+
+            <div class="placeholder">
+                Preview
+            </div>
+
+            <h3>Calculus Visualizer</h3>
+
+            <p>
+                Interactive derivatives,
+                integrals, and tangent lines.
+            </p>
+
+        </article>
+
+    </div>
+
+    <div class="center">
+        <a class="button primary" href="gallery.html">
+            View Full Gallery →
+        </a>
+    </div>
+
+</section>
+
+<section id="about">
+
+    <h2>About</h2>
+
+    <p>
+        Mathematics becomes much more interesting when
+        you can interact with it.
+    </p>
+
+    <p>
+        This website showcases my Desmos projects,
+        ranging from simple geometric constructions
+        to advanced simulations and procedural artwork.
+        Every graph is built from equations and designed
+        to demonstrate mathematical concepts in a visual,
+        intuitive way.
+    </p>
+
+</section>
+
+<section id="contact">
+
+    <h2>Connect</h2>
+
+    <div class="contact-buttons">
+
+        <a href="gallery.html" class="button secondary">
+            Browse Gallery
+        </a>
+
+        <a href="https://github.com/" target="_blank" class="button secondary">
+            GitHub
+        </a>
+
+        <a href="https://www.desmos.com/" target="_blank" class="button secondary">
+            Desmos
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+        © <span id="year"></span>
+        Kiernan Mulholland
+    </p>
+
+    <p>
+        Built with HTML, CSS, JavaScript, and Desmos.
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
