@@ -1,0 +1,670 @@
+/* ======================================================
+   Desmos Portfolio
+   style.css
+====================================================== */
+
+:root {
+    --bg: #09111f;
+    --bg2: #101b30;
+    --surface: rgba(18, 28, 46, 0.72);
+    --border: rgba(255,255,255,.08);
+
+    --accent: #4ea1ff;
+    --accent2: #74c7ff;
+
+    --text: #f5f7ff;
+    --text2: #a8b4cb;
+
+    --shadow: 0 12px 40px rgba(0,0,0,.35);
+
+    --radius: 18px;
+    --transition: .3s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    color:var(--text);
+
+    background:
+        radial-gradient(circle at top left,#16345f 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#1d3d75 0%,transparent 35%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* ----------------------------- */
+/* Animated background           */
+/* ----------------------------- */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    overflow:hidden;
+
+}
+
+#background::before,
+#background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.22;
+
+    animation:float 18s infinite ease-in-out;
+
+}
+
+#background::before{
+
+    background:#3b82f6;
+
+    left:-150px;
+    top:-120px;
+
+}
+
+#background::after{
+
+    background:#2563eb;
+
+    right:-150px;
+    bottom:-150px;
+
+    animation-delay:7s;
+
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px) scale(1);
+    }
+
+    50%{
+        transform:translateY(-60px) scale(1.15);
+    }
+
+    100%{
+        transform:translateY(0px) scale(1);
+    }
+
+}
+
+/* ----------------------------- */
+/* Header                        */
+/* ----------------------------- */
+
+header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 10%;
+
+    position:sticky;
+
+    top:0;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(8,13,24,.45);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+}
+
+.logo-icon{
+
+    color:var(--accent);
+
+    font-size:1.7rem;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:28px;
+
+}
+
+nav a{
+
+    color:var(--text2);
+
+    text-decoration:none;
+
+    transition:var(--transition);
+
+    font-weight:500;
+
+}
+
+nav a:hover{
+
+    color:white;
+
+}
+
+/* ----------------------------- */
+/* Hero                          */
+/* ----------------------------- */
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 10%;
+
+}
+
+.hero-text{
+
+    max-width:850px;
+
+}
+
+.eyebrow{
+
+    color:var(--accent);
+
+    text-transform:uppercase;
+
+    letter-spacing:4px;
+
+    font-size:.9rem;
+
+    margin-bottom:18px;
+
+}
+
+.hero h1{
+
+    font-size:4.2rem;
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+}
+
+.accent{
+
+    color:var(--accent);
+
+}
+
+.hero h2{
+
+    color:var(--text2);
+
+    font-weight:400;
+
+    height:40px;
+
+    margin-bottom:25px;
+
+}
+
+.hero-description{
+
+    font-size:1.15rem;
+
+    color:var(--text2);
+
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* ----------------------------- */
+/* Buttons                       */
+/* ----------------------------- */
+
+.hero-buttons,
+.contact-buttons,
+.center{
+
+    margin-top:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.button{
+
+    text-decoration:none;
+
+    padding:15px 30px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.primary{
+
+    background:linear-gradient(135deg,var(--accent),#2563eb);
+
+    color:white;
+
+}
+
+.primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(59,130,246,.45);
+
+}
+
+.secondary{
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.secondary:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-4px);
+
+}
+
+/* ----------------------------- */
+/* Sections                      */
+/* ----------------------------- */
+
+section{
+
+    padding:90px 10%;
+
+}
+
+section h2{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    margin-bottom:20px;
+
+}
+
+.section-description{
+
+    text-align:center;
+
+    color:var(--text2);
+
+    margin-bottom:50px;
+
+}
+
+/* ----------------------------- */
+/* Stats                         */
+/* ----------------------------- */
+
+#stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.stat-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:var(--radius);
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.stat-card h2{
+
+    color:var(--accent);
+
+    font-size:2.8rem;
+
+    margin-bottom:8px;
+
+}
+
+/* ----------------------------- */
+/* Featured Cards                */
+/* ----------------------------- */
+
+.featured-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.feature-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.placeholder{
+
+    height:220px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:1.2rem;
+
+    background:linear-gradient(145deg,#1f3e73,#24498a);
+
+    color:white;
+
+}
+
+.feature-card h3{
+
+    padding:22px 22px 12px;
+
+    font-size:1.4rem;
+
+}
+
+.feature-card p{
+
+    padding:0 22px 25px;
+
+    color:var(--text2);
+
+    line-height:1.7;
+
+}
+
+/* ----------------------------- */
+/* About                         */
+/* ----------------------------- */
+
+#about{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+#about p{
+
+    color:var(--text2);
+
+    line-height:1.9;
+
+    margin-bottom:22px;
+
+    text-align:center;
+
+}
+
+/* ----------------------------- */
+/* Footer                        */
+/* ----------------------------- */
+
+footer{
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+    padding:40px;
+
+    text-align:center;
+
+    color:var(--text2);
+
+}
+
+footer p{
+
+    margin:8px;
+
+}
+
+/* ----------------------------- */
+/* Scroll Animations             */
+/* ----------------------------- */
+
+.fade{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:1s;
+
+}
+
+.fade.show{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+/* ----------------------------- */
+/* Scrollbar                     */
+/* ----------------------------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#09111f;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2756a5;
+
+    border-radius:100px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#4ea1ff;
+
+}
+
+/* ----------------------------- */
+/* Responsive                    */
+/* ----------------------------- */
+
+@media(max-width:900px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        padding:20px;
+
+    }
+
+    nav{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .hero h1{
+
+        font-size:3rem;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+
+        min-height:80vh;
+
+    }
+
+    .hero h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+    section{
+
+        padding:70px 7%;
+
+    }
+
+    .button{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
