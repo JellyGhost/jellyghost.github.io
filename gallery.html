@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Gallery | Desmos Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span class="logo-icon">∫</span>
+        <span>Graph Gallery</span>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#filters">Filters</a>
+        <a href="#grid">Graphs</a>
+    </nav>
+
+</header>
+
+<section class="hero" style="min-height:60vh;">
+
+    <div class="hero-text">
+
+        <p class="eyebrow">Explore Mathematics</p>
+
+        <h1>
+            Graph <span class="accent">Gallery</span>
+        </h1>
+
+        <p class="hero-description">
+            A collection of interactive Desmos visualizations,
+            simulations, and mathematical artwork.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- FILTERS -->
+<section id="filters">
+
+    <h2>Search & Filter</h2>
+
+    <div style="max-width:900px;margin:auto;">
+
+        <input id="searchInput"
+               type="text"
+               placeholder="Search graphs..."
+               style="
+                    width:100%;
+                    padding:14px 18px;
+                    border-radius:999px;
+                    border:1px solid rgba(255,255,255,.1);
+                    background:rgba(255,255,255,.03);
+                    color:white;
+                    outline:none;
+                    margin-bottom:20px;
+               " />
+
+        <div id="tagFilters" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"></div>
+
+    </div>
+
+</section>
+
+<!-- GRID -->
+<section id="grid">
+
+    <h2>All Graphs</h2>
+
+    <div id="graphGrid" class="featured-grid"></div>
+
+</section>
+
+<footer>
+    <p>© <span id="year"></span> Kiernan Mulholland</p>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+/* ===========================
+   Gallery Logic
+=========================== */
+
+let allGraphs = [];
+let activeTag = null;
+
+const grid = document.getElementById("graphGrid");
+const searchInput = document.getElementById("searchInput");
+const tagContainer = document.getElementById("tagFilters");
+
+function renderGraphs(graphs) {
+
+    grid.innerHTML = "";
+
+    graphs.forEach(graph => {
+
+        const card = document.createElement("div");
+        card.className = "feature-card";
+
+        card.innerHTML = `
+            <div class="placeholder">
+                ${graph.title}
+            </div>
+
+            <h3>${graph.title}</h3>
+
+            <p>${graph.description}</p>
+
+            <div style="padding:0 22px 22px; display:flex; gap:10px; flex-wrap:wrap;">
+
+                ${graph.tags.map(tag =>
+                    `<span style="
+                        font-size:12px;
+                        padding:5px 10px;
+                        border-radius:999px;
+                        background:rgba(78,161,255,.15);
+                        border:1px solid rgba(78,161,255,.3);
+                        color:#cfe6ff;
+                    ">${tag}</span>`
+                ).join("")}
+
+            </div>
+
+            <div style="padding:0 22px 22px;">
+                <a class="button secondary"
+                   href="${graph.desmos}"
+                   target="_blank">
+                   Open in Desmos →
+                </a>
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+function getAllTags(graphs) {
+    const tags = new Set();
+    graphs.forEach(g => g.tags.forEach(t => tags.add(t)));
+    return [...tags];
+}
+
+function renderTags(tags) {
+
+    tagContainer.innerHTML = "";
+
+    const allBtn = document.createElement("button");
+    allBtn.className = "button secondary";
+    allBtn.textContent = "All";
+
+    allBtn.onclick = () => {
+        activeTag = null;
+        filterGraphs();
+    };
+
+    tagContainer.appendChild(allBtn);
+
+    tags.forEach(tag => {
+
+        const btn = document.createElement("button");
+        btn.className = "button secondary";
+        btn.textContent = tag;
+
+        btn.onclick = () => {
+            activeTag = tag;
+            filterGraphs();
+        };
+
+        tagContainer.appendChild(btn);
+    });
+}
+
+function filterGraphs() {
+
+    const query = searchInput.value.toLowerCase();
+
+    let filtered = allGraphs;
+
+    if (activeTag) {
+        filtered = filtered.filter(g => g.tags.includes(activeTag));
+    }
+
+    if (query) {
+        filtered = filtered.filter(g =>
+            g.title.toLowerCase().includes(query) ||
+            g.description.toLowerCase().includes(query) ||
+            g.tags.some(t => t.toLowerCase().includes(query))
+        );
+    }
+
+    renderGraphs(filtered);
+}
+
+/* ---------------------------
+   Load JSON + Init
+--------------------------- */
+
+async function init() {
+
+    allGraphs = await loadGraphs();
+
+    renderGraphs(allGraphs);
+
+    renderTags(getAllTags(allGraphs));
+
+}
+
+searchInput.addEventListener("input", filterGraphs);
+
+init();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
